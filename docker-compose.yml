@@ -1,0 +1,21 @@
+version: '2.1'
+
+services:
+    gateway:
+        build:
+            context: .
+            dockerfile: main.Dockerfile
+        ports:
+            - 8080:8080
+    social:
+        build:
+            context: .
+            dockerfile: service.Dockerfile
+            args:
+                SERVICE_NAME: social
+    network-orchestration:
+        build:
+            context: .
+            dockerfile: service.Dockerfile
+            args:
+                SERVICE_NAME: network-orchestration
